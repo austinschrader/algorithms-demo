@@ -8,18 +8,23 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Hello World</h1>
-			<form id="formOne">
-				<p>Please insert a number and press submit!</p>
-				<div class="form-group">
-					<label for="userInput">Please enter a number:</label>
-					<input id="userInput" type="text" />
+			<div class="row">
+				<div class="input col">
+					<form id="formOne">
+						<p>Please insert a number and press submit!</p>
+						<div class="form-group">
+							<label for="userInput">Please enter a number:</label>
+							<input id="userInput" type="text" />
+						</div>
+						<button type="submit" class="btn btn-warning">Sort</button>
+					</form>
 				</div>
-				<button type="submit" class="btn btn-warning">Sort</button>
-			</form>
 
-			<p class="userResults">Your results are:</p>
-			<ul class="userResults2"></ul>
+				<div class="output col">
+					<p class="userResults">Your results are:</p>
+					<ul class="userResults2"></ul>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

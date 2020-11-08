@@ -1,3 +1,14 @@
 /* body {
 	background-color: black;
 } */
+
+.input {
+	height: 100%;
+	width: 35%;
+	border: 1px solid black;
+}
+
+.output {
+	height: 100%;
+	border: 1px solid black;
+}
