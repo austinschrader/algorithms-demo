@@ -69,35 +69,17 @@ function createDynamArray(num) {
 	return arrayToSort;
 }
 
+function measureTime(arrayToSort) {
+	let startTime = performance.now();
+	mergeSort(arrayToSort);
+	let endTime = performance.now();
+	let runTime = endTime - startTime;
+
+	return runTime;
+}
+
 console.log(measureTime(createDynamArray(7)));
 console.log(measureTime(createDynamArray(43)));
-
-function measureTime(arrayToSort) {
-	// console.log(arrayToSort.length);
-
-	let startTime = performance.now();
-	let lapTimes = [];
-	// console.log(lapTimes);
-	// Run MergeSort()
-	for (let i = 0; i < 1; i++) {
-		let lapStart = performance.now();
-		sortedArray = mergeSort(arrayToSort);
-		// console.log('this is loop ' + i);
-		let lapEnd = performance.now();
-		let eachLoopTime = lapEnd - lapStart;
-		// console.log(eachLoopTime);
-		lapTimes.push(eachLoopTime);
-	}
-	console.log(lapTimes);
-	// console.log('The average time is ' + average(lapTimes));
-	// Stop the timer
-	let endTime = performance.now();
-	runTimeMergeSort = (endTime - startTime) / 10;
-
-	let x = arrayToSort.length;
-	let y = lapTimes[0];
-	return x + y;
-}
 
 // // Front End Logic
 // $(document).ready(function () {
