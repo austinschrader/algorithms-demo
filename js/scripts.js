@@ -61,75 +61,92 @@ function average(nums) {
 	return nums.reduce((a, b) => a + b) / nums.length;
 }
 
-// Front End Logic
-$(document).ready(function () {
-	$('#formOne').submit(function () {
-		event.preventDefault();
-		function createDynamArray(num) {
-			// Start Array - From - https://stackoverflow.com/questions/5836833/create-an-array-with-random-values
-			let arrayToSort = Array(num)
-				.fill()
-				.map(() => Math.round(Math.random() * 100));
-			return arrayToSort;
-		}
+function createDynamArray(num) {
+	arrayToSort = Array(num)
+		.fill()
+		.map(() => Math.round(Math.random() * 10));
+	// console.log(arrayToSort);
+	return arrayToSort;
+}
 
-		// Timer - From - https://stackoverflow.com/questions/313893/how-to-measure-time-taken-by-a-function-to-execute
-		// Start the timer
-		let startTime = performance.now();
-		let lapTimes = [];
-		console.log(lapTimes);
+console.log(measureTime(createDynamArray(7)));
+console.log(measureTime(createDynamArray(43)));
 
-		// Run MergeSort()
-		for (let i = 0; i < 11; i++) {
-			let lapStart = performance.now();
-			sortedArray = mergeSort(arrayToSort);
-			// console.log('this is loop ' + i);
-			let lapEnd = performance.now();
-			let eachLoopTime = lapEnd - lapStart;
-			// console.log(eachLoopTime);
-			lapTimes.push(eachLoopTime);
-		}
+function measureTime(arrayToSort) {
+	// console.log(arrayToSort.length);
 
-		// console.log(lapTimes);
+	let startTime = performance.now();
+	let lapTimes = [];
+	// console.log(lapTimes);
+	// Run MergeSort()
+	for (let i = 0; i < 1; i++) {
+		let lapStart = performance.now();
+		sortedArray = mergeSort(arrayToSort);
+		// console.log('this is loop ' + i);
+		let lapEnd = performance.now();
+		let eachLoopTime = lapEnd - lapStart;
+		// console.log(eachLoopTime);
+		lapTimes.push(eachLoopTime);
+	}
+	console.log(lapTimes);
+	// console.log('The average time is ' + average(lapTimes));
+	// Stop the timer
+	let endTime = performance.now();
+	runTimeMergeSort = (endTime - startTime) / 10;
 
-		// console.log('The average time is ' + average(lapTimes));
+	let x = arrayToSort.length;
+	let y = lapTimes[0];
+	return x + y;
+}
 
-		// Stop the timer
-		let endTime = performance.now();
-		runTimeMergeSort = (endTime - startTime) / 10;
+// // Front End Logic
+// $(document).ready(function () {
+// 	$('#formOne').submit(function () {
+// 		event.preventDefault();
+// 		let arrayToSort = [];
 
-		// Append the Results
-		$('.userResults')
-			.empty()
-			.append('The unsorted array is: ' + arrayToSort + '</br>');
-		$('.userResults').append('The sorted array is: ' + sortedArray + '</br>');
-		$('.userResults').append(
-			'It took the MergeSort function ' + runTimeMergeSort + ' ms to run'
-		);
+// 		// Timer - From - https://stackoverflow.com/questions/313893/how-to-measure-time-taken-by-a-function-to-execute
+// 		// Start the timer
 
-		let dataPointValue0 = { x: 100, y: lapTimes[0] };
-		let dataPointValue1 = { x: 1000, y: lapTimes[1] };
-		let dataPointValue2 = { x: 10, y: lapTimes[2] };
-		let dataPointValue3 = { x: 10, y: lapTimes[3] };
-		let dataPointValue4 = { x: 10, y: lapTimes[4] };
+// 		// Append the Results
+// 		$('.userResults')
+// 			.empty()
+// 			.append('The unsorted array is: ' + arrayToSort + '</br>');
+// 		$('.userResults').append('The sorted array is: ' + sortedArray + '</br>');
+// 		$('.userResults').append(
+// 			'It took the MergeSort function ' + runTimeMergeSort + ' ms to run'
+// 		);
 
-		console.log(dataPointValue0);
+// 		let dataArray = [];
+// 		for (let i = 0; i < 10; i += 5) {
+// 			let dataPointValue = { x: i, y: createDynamArray(i) };
+// 			dataArray.push(dataPointValue);
+// 		}
 
-		var chart = new CanvasJS.Chart('chartContainer', {
-			data: [
-				{
-					type: 'line',
-					indexLabelFontSize: 16,
-					dataPoints: [
-						dataPointValue0,
-						dataPointValue1,
-						dataPointValue2,
-						dataPointValue3,
-						dataPointValue4,
-					],
-				},
-			],
-		});
-		chart.render();
-	});
-});
+// 		// let dataPointValue1 = { x: 1000, y: lapTimes[1] };
+// 		// let dataPointValue2 = { x: 10, y: lapTimes[2] };
+// 		// let dataPointValue3 = { x: 10, y: lapTimes[3] };
+// 		// let dataPointValue4 = { x: 10, y: lapTimes[4] };
+
+// 		console.log(dataPointValue0);
+
+// 		/*
+// 		var chart = new CanvasJS.Chart('chartContainer', {
+// 			data: [
+// 				{
+// 					type: 'line',
+// 					indexLabelFontSize: 16,
+// 					dataPoints: [
+// 						dataPointValue0,
+// 						dataPointValue1,
+// 						dataPointValue2,
+// 						dataPointValue3,
+// 						dataPointValue4,
+// 					],
+// 				},
+// 			],
+// 		});
+// 		chart.render();
+// 			*/
+// 	});
+// });
